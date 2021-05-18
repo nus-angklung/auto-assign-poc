@@ -73,7 +73,8 @@ def subs_dots(f):
                     ctx[j] = last_note
     return
 
-# Cleaning
+# Expects f to be a 3D nested list
+# Returns a processed 3D nested list with no non-notes lines
 def clean(f):
     # flatten the file, ignore first because it's title
     a = [flatten(x) for x in f.body[1:]]
@@ -83,6 +84,8 @@ def clean(f):
     subs_dots(a)
     return a
 
+# Expects f to be a 3D nested list
+# Return a list of sets
 def transform(f):
     # process first line because it might contain the ANGKLUNG_SIGN
     akl_idx = find_angklung_index(f[0])
