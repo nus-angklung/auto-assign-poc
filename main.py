@@ -14,7 +14,7 @@ ready_f = transform(clean(f))
 
 nonconflicts, stats = gen_nonconflict_report(ready_f)
 
-with open("results/stats.json", "w") as outfile:
-    processed = [{'keys': k, 'times': v, 'non-conflicts': ",".join(nonconflicts[k])} for k, v in stats.items()]
+with open("results/statsv1.json", "w") as outfile:
+    processed = [{'keys': k, 'times': v, 'non-conflicts': nonconflicts[k]} for k, v in stats.items()]
     json.dump(processed, outfile, indent=4)
 
