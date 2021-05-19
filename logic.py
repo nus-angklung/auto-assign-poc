@@ -10,6 +10,7 @@ def _encode(input):
 
 # Generate which notes cannot be played together
 # Expects input to be a list of sets
+# Outputs a dictionary, with key = note, value: how many notes it plays + a list of non-conflicting notes
 def gen_nonconflict_report(input):
     conflicts = {} # set of all conflicts 
     stats = {}  
@@ -29,8 +30,8 @@ def gen_nonconflict_report(input):
             conflicts[j] |= input[i]
     
     keys = conflicts.keys()
-    res = {k : (stats[k], keys - v) for k, v in conflicts.items()}
-    return res
+    nonconflicts = {k : list(keys - v) for k, v in conflicts.items()}
+    return nonconflicts, stats
 
 class Stats:
     def __init__(self):
