@@ -73,7 +73,7 @@ def subs_dots(f):
                     ctx[j] = last_note
     return
 
-# Expects f to be a 3D nested list
+# Expects f to be a 4D nested list
 # Returns a processed 3D nested list with no non-notes lines
 def clean(f):
     # flatten the file, ignore first because it's title
